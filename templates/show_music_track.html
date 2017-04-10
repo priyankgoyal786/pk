@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>My Example</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+<!-- CSS -->
+<style>
+.myForm {
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.8em;
+width: Auto;
+padding: 1em;
+border: 1px solid #ccc;
+}
+
+.myForm * {
+box-sizing: border-box;
+}
+
+.myForm fieldset {
+border: none;
+padding: 0;
+}
+
+.myForm legend,
+.myForm label {
+padding: 0;
+font-weight: bold;
+}
+
+.myForm label.choice {
+font-size: 0.9em;
+font-weight: normal;
+}
+
+.myForm input[type="text"],
+.myForm input[type="tel"],
+.myForm input[type="email"],
+.myForm input[type="datetime-local"],
+.myForm select,
+.myForm textarea {
+display: block;
+width: 100%;
+border: 1px solid #ccc;
+font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+font-size: 0.9em;
+padding: 0.3em;
+}
+
+.myForm textarea {
+height: Auto;
+}
+
+.myForm button {
+padding: 0.5em;
+border-radius: 1.0em;
+background: #eee;
+border: none;
+font-weight: bold;
+margin-top: 2em;
+}
+
+.myForm button:hover {
+background: #ccc;
+cursor: pointer;
+}
+
+table {
+border-collapse: collapse;
+border: 1px solid black;
+}
+input[type=text] {
+    width: 50px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 50%;
+}
+</style>
+
+</head>
+<body>
+
+<form class="myForm" method="get" onclick="return false" enctype="application/x-www-form-urlencoded" action="/html/codes/html_form_handler.cfm">
+<p><header>
+    <b>Track's Music</b>
+</header>
+</p>
+
+    <input type="text" name="search" id="get-search-data" placeholder="Search Title.."><button id="get-search">Search</button>
+<p>
+<table id="data-append">
+    {% for get_datas in get_data %}
+<tr>
+    <td>
+        <a href="/editmusic/{{ get_datas.id }}/" target="_blank">{{ get_datas.title }}</a>
+    </td>
+
+    <td>
+        {% for i in get_datas.genres %}
+        {{ i.name }}
+        {% endfor %}
+    </td>
+
+    <td>
+        {{ get_datas.rating }}
+    </td>
+    </tr>
+    {% endfor %}
+</table>
+</p>
+
+
+<a href="/addmusic/">Add New Track</a>
+
+</form>
+
+</body>
+<script>
+    $("#get-search").click(function(){
+console.log('lllllllllllllllllllll')
+    $.ajax({url: "/get_title_data/",
+        data:{'get-data':$('#get-search-data').val()}
+        ,success: function(result){
+            data=JSON.parse(result)
+            console.log(data)
+            html=''
+            for(i=0;i<data.results.length;i++){
+               html+='<tr><td>'+data.results[i].title+'</td> <td>['
+                for(j=0;j<data.results[i].genres.length;j++){
+                   html+=data.results[i].genres[j].name+'|'
+                }
+                html+=']</td><td>'+data.results[i].rating+'</td> </tr>'
+            }
+            $('#data-append').empty()
+            $('#data-append').append(html)
+
+
+    }});
+});
+</script>
+</html>

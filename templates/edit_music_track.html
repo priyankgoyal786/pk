@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+                            <div class="panel-body">
+                            <h2><i class="fa fa-pencil-square teal"></i> Edit Music Track</h2>
+
+                            <hr>
+                            <form action="" method="post" role="form" id="form">
+                                 {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label class="control-label">
+                                                Title <span class="symbol required"></span>
+                                            </label>
+                                            <input type="text" placeholder="Enter Title" class="form-control"
+                                                   id="title" name="title" value="{{ getdata }}">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Rating <span class="symbol required"></span>
+                                            </label>
+                                            <input type="text" placeholder="Enter Rating " class="form-control"
+                                                   id="rating" name="rating" value="{{ getdata }}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">
+                                                Genres <span class="symbol required"></span>
+                                            </label>
+                                            <input type="text" placeholder="Enter Genres " class="form-control"
+                                                   id="genres" name="genres" value="{{ getdata }}">
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-8">
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-yellow" type="submit">
+                                                Submit <i class="fa fa-arrow-circle-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
+</body>
+</html>
