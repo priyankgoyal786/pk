@@ -29,9 +29,7 @@ class MusicTrackDetails(View):
         return render(request, 'show_music_track.html', {'get_data': results})
 
 class Add_Music_Details(View):
-    print ">>>>>>>>>"
     def get(self, request):
-        print "hi"
         return render(request, 'add_music_track.html')
         # return HttpResponseRedirect(reverse('add_music_track.ht'))
 
