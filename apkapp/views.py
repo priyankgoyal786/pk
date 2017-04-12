@@ -62,16 +62,16 @@ class EditMusicTrackDetails(View):
 
     def get(self, request, id):
         # Fetch the sighal data
-        # print id,"id"
-        # url = 'http://104.197.128.152:8000/v1/tracks/' + str(id)
-        # # print url
-        # response = urllib2.urlopen(url)
-        # # print response,"okokokokokokokk"
-        # data = response.read()
-        # get_data = json.loads(data)
-        # print get_data
+        print id,"id"
+        url = 'http://104.197.128.152:8000/v1/tracks/' + str(id)
+        print url
+        response = urllib2.urlopen(url)
+        # print response,"okokokokokokokk"
+        data = response.read()
+        get_data = json.loads(data)
+        print get_data
 
-        return render(request, 'edit_music_track.html')
+        return render(request, 'edit_music_track.html',{"getdata":get_data})
 
     def post(self, request, id):
         title = request.POST['title']

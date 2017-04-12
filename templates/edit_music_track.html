@@ -13,13 +13,15 @@
                      {% csrf_token %}
                     <div class="row">
                         <div class="col-md-6">
+{#                         {% for getdata in getdata %}#}
+
                             <div class="form-group">
 
                                 <label class="control-label">
                                     Title <span class="symbol required"></span>
                                 </label>
                                 <input type="text" placeholder="Enter Title" class="form-control"
-                                       id="title" name="title" value="{{ getdata }}">
+                                       id="title" name="title" value="{{ getdata.title }}">
                             </div>
 
                             <div class="form-group">
@@ -27,7 +29,7 @@
                                     Rating <span class="symbol required"></span>
                                 </label>
                                 <input type="text" placeholder="Enter Rating " class="form-control"
-                                       id="rating" name="rating" value="{{ getdata }}">
+                                       id="rating" name="rating" value="{{ getdata.rating }}">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">
@@ -37,7 +39,7 @@
                                        id="genres" name="genres" value="{{ getdata }}">
 
                             </div>
-
+{#                            {% endfor %}#}
 
 
                         </div>
