@@ -42,12 +42,15 @@ class Add_Music_Details(View):
         url = 'http://104.197.128.152:8000/v1/tracks'
 
         data = {
-
-            "title": title,
-            "rating": rating,
-            "genres": [
-                {"name ": genres,}
-             ]
+            "results": [
+                {
+                    "title": title,
+                    "rating": rating,
+                    "genres": [
+                        {"name ": genres },
+                                ]
+                }
+                        ]
         }
         requests.post(url, data=json.dumps(data), headers=headers)
 
@@ -72,20 +75,23 @@ class EditMusicTrackDetails(View):
 
     def post(self, request, id):
         title = request.POST['title']
-        genres = request.POST['genres']
+        # genres = request.POST['genres']
         rating = request.POST['rating']
 
         headers = {'content-type': 'application/json'}
         url = 'http://104.197.128.152:8000/v1/tracks/' +str(id)
 
         data = {
-            "id": id,
-            "title": title,
-            "rating": rating,
-            "genres": [
-                {"name ": genres,}
-             ]
-        }
+                "results": [
+                            {"id": id,
+                            "title": title,
+                            "rating": rating,
+                            # "genres": [
+                            #     {"name ": genres },
+                            #  ]
+                            }
+                            ]
+                }
         requests.post(url, data=json.dumps(data), headers=headers)
 
         return HttpResponseRedirect(reverse('music_show'))
