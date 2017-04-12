@@ -46,7 +46,7 @@ class Add_Music_Details(View):
             "title": title,
             "rating": rating,
             "genres": [
-                genres
+                {"name ": genres,}
              ]
         }
         requests.post(url, data=json.dumps(data), headers=headers)
@@ -83,8 +83,8 @@ class EditMusicTrackDetails(View):
             "title": title,
             "rating": rating,
             "genres": [
-                genres
-            ]
+                {"name ": genres,}
+             ]
         }
         requests.post(url, data=json.dumps(data), headers=headers)
 
@@ -112,18 +112,18 @@ class Add_Genres_Details(View):
         return render(request, 'add_genres.html')
 
     def post(self, request):
-        name = request.POST['name']
+        # name = request.POST['name']
         genres = request.POST['genres']
+        # print name ,'name'
+        # print genres, 'genres'
 
         headers = {'content-type': 'application/json'}
-        url = ' http://104.197.128.152:8000/v1/genres'
+        url = 'http://104.197.128.152:8000/v1/genres'
 
         data = {
 
-            "name": name,
-
-            "genres": [
-                genres
+            "results": [
+                {"name ": genres,}
              ]
          }
         requests.post(url, data=json.dumps(data), headers=headers)
@@ -134,7 +134,7 @@ class Add_Genres_Details(View):
 class EditGenresDetails(View):
     def get(self, request, id):
         # Fetch the sighal data
-        print id,'id'
+        # print id,'id'
         url = 'http://104.197.128.152:8000/v1/genres/' + str(id)
         response = urllib2.urlopen(url)
         data = response.read()
@@ -147,7 +147,7 @@ class EditGenresDetails(View):
     def post(self, request, id):
         id = request.POST['id']
         name = request.POST['name']
-
+        print name
         headers = {'content-type': 'application/json'}
         url = 'http://104.197.128.152:8000/v1/genres' +str(id)
 

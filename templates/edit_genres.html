@@ -5,46 +5,46 @@
     <title>Title</title>
 </head>
 <body>
-                            <div class="panel-body">
-                            <h2><i class="fa fa-pencil-square teal"></i> Edit Genre Track</h2>
+        <div class="panel-body">
+            <h2><i class="fa fa-pencil-square teal"></i> Edit Genre Track</h2>
 
-                            <hr>
-                            <form action="" method="post" role="form" id="form">
-                                 {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                            <label class="control-label">
-                                                Id:-   <span class="symbol required"></span>
-                                            </label>
-                                            <input type="text" placeholder="Enter genres " class="form-control"
-                                                   id="id" name="id" value="{{ get_data.id }}">
-                                            </div>
+            <hr>
+            <form action="" method="post" role="form" id="form">
+                 {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                            <label class="control-label">
+                                Id:-   <span class="symbol required"></span>
+                            </label>
+                            <input type="hidden" placeholder="Enter genres " class="form-control"
+                                   id="id" name="id" value="{{ get_data.id }}">
+                            </div>
 
-                                            <label class="control-label">
-                                                Genres Name:-   <span class="symbol required"></span>
-                                            </label>
-                                            <input type="text" placeholder="Enter Name" class="form-control"
-                                                   id="name" name="name" value="{{get_data.name}}">
-                                            </div>
+                            <label class="control-label">
+                                Genres Name:-   <span class="symbol required"></span>
+                            </label>
+                            <input type="text" placeholder="Enter Name" class="form-control"
+                                   id="name" name="name" value="{{get_data.name}}">
+                            </div>
 
-                                        </div>
-
-                                    <div class="row">
-                                        <div class="col-md-8">
-
-                                        </div>
-                                        <div class="col-md-4">
-                                            <button class="btn btn-yellow" type="submit">
-                                                Submit <i class="fa fa-arrow-circle-right"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </form>
                         </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-yellow" type="submit">
+                                Submit <i class="fa fa-arrow-circle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
 
 </body>
 </html>
